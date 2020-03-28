@@ -1,0 +1,61 @@
+<?php
+$error_fields = [];
+if (!empty($_POST['login'] && $_POST['pass'])) {
+    $login = filter_var(trim($_POST['login']), FILTER_SANITIZE_STRING);
+    require_once 'BDConfig.php';
+    $sql = "SELECT * FROM `admins` WHERE login= '$login'";
+    $query = $pdo->query($sql);
+    $pri = $query->fetch(PDO::FETCH_OBJ);
+    if ($pri) {
+        $hash_pass = $pri->pass;
+        $pass = password_verify($_POST['pass'], $hash_pass);
+        if (!$pass) {
+            $response = [
+                "status" => false,
+                "msg" => "Неправильный логин или пароль"
+            ];
+            echo json_encode($response);
+
+        } else {
+            if ($pri->admin == 1){
+                $response = [
+                    'status' => true,
+                    'admin' => true
+                ];
+                echo json_encode($response);
+            } else {
+                $response = [
+                    'status' => true
+                ];
+                echo json_encode($response);
+            }
+
+
+        }
+    } elseif (!$pri) {
+        $response = [
+            "status" => false,
+            "msg" => "Неправильный логин или пароль"
+
+        ];
+        echo json_encode($response);
+    }
+}
+else{
+    if (empty($_POST['login'])) {
+        $error_fields[] = 'login';
+
+    }
+    if (empty($_POST['pass'])) {
+        $error_fields[] = 'pass';
+    }
+        $response = [
+            "status" => false,
+            "type" => 1,
+            "field" => $error_fields,
+            "msg" => "Вы забыли ввести данные"
+        ];
+        echo json_encode($response);
+
+}
+

@@ -1,0 +1,68 @@
+.main {
+    background: linear-gradient(45deg, rgba(220, 222, 221, 0.47), #ffffff);
+    border: 3px solid #0286ff;
+    box-shadow: -5px -3px 4px 2px darkgrey;
+    border-radius: 1em;
+    padding: 1em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /*margin-right: -50%;*/
+    transform: translate(-50%, -50%)
+}
+
+.register {
+    background: linear-gradient(70deg, rgba(197, 222, 206, 0.29), #ffffff);
+    border: 4px solid rgba(4, 183, 96, 0.64);
+}
+
+.text_area {
+    background: linear-gradient(130deg, #d7dede, #ffffff);
+    border-radius: 7px;
+    margin: 5px;
+    padding: 3px;
+}
+
+.td {
+    background: dodgerblue;
+}
+
+.btn-success {
+    margin-top: 1em;
+    /*background: dodgerblue;*/
+    position: relative;
+    left: 40%;
+    margin-bottom: 10px;
+
+
+}
+
+.btn-register {
+    left: 35%;
+}
+
+.reg_form {
+    font-family: Adobe Devanagari;
+}
+
+.important {
+    /*font-style: italic;*/
+    color: red;
+}
+
+.msg {
+    position: relative;
+    /*left: 40%;*/
+    margin: 10px;
+    padding: 10px;
+    border: red solid 3px;
+    border-radius: 10px;
+    text-align: center;
+    font-family: "Adobe Devanagari";
+}
+.none {
+    display: none;
+}
+.empty {
+    border: 2px solid #ff460a;
+}
