@@ -1,15 +1,15 @@
 /*Форма авторизации*/
 $('html').keydown(function(e){ //отлавливаем нажатие клавиш
     if (e.keyCode == 13) { //если нажали Enter, то true
-        $('input').removeClass('empty');
-        $('.btn_SignIn').click()// Нажатие на клавиатуре Enter инициирует нажатие кнопки отправки
+        $('.btn_SignUp').click();// Нажатие на клавиатуре Enter инициирует нажатие кнопки отправки
+        $('.btn_SignIn').click();
     }
 });
-$('.btn_SignIn').click(function() {//отслеживаем нажатие кнопки "Авторизация"
+
+$('.btn_SignIn').click(function () {//отслеживаем нажатие кнопки "Авторизация"
     let login = $('input[name="login"]').val(),
         pass = $('input[name="pass"]').val();
     $('input').removeClass('empty');// Очищаем выделениие полей, если они остались с предыдущего заполнения
-
 
 
     $.ajax({
@@ -20,36 +20,28 @@ $('.btn_SignIn').click(function() {//отслеживаем нажатие кн�
             login: login,
             pass: pass
         },
-        success (data)
-    {
-        if (data.status){
-            if (data.admin){
-                document.location.href = 'admin.php'
-            }
-            else {
-                document.location.href = 'Hello.php'
-            }
-        }else {
-            if (data.type === 1){
-                data.field.forEach(function (field) {
-                    $(`input[name="${field}"]`).addClass('empty');
+        success(data) {
+            if (data.status) {
+                if (data.admin) {
+                    document.location.href = 'admin.php'
+                } else {
+                    document.location.href = 'Hello.php'
+                }
+            } else {
+                if (data.type === 1) {
+                    data.field.forEach(function (field) {
+                        $(`input[name="${field}"]`).addClass('empty');
 
-                })
+                    })
+                }
+                $('.msg').removeClass('none').text(data.msg);
             }
-            $('.msg').removeClass('none').text(data.msg);
         }
-    }
-});
+    });
 });
 
 /*Форма регистрации*/
-$('html').keydown(function(e){ //отлавливаем нажатие клавиш
-    if (e.keyCode == 13) { //если нажали Enter, то true
-        $('input').removeClass('empty');
-        $('.btn_SignUp').click()// Нажатие на клавиатуре Enter инициирует нажатие кнопки отправки
-    }
-});
-$('.btn_SignUp').click(function() {
+$('.btn_SignUp').click(function () {
     let login = $('input[name="login"]').val(),
         pass = $('input[name="pass"]').val(),
         pass_rpt = $('input[name="pass_rpt"]').val(),
@@ -58,7 +50,6 @@ $('.btn_SignUp').click(function() {
         last_name = $('input[name="last_name"]').val(),
         tel = $('input[name="tel"]').val();
     $('input').removeClass('empty');
-
 
 
     $.ajax({
@@ -74,20 +65,19 @@ $('.btn_SignUp').click(function() {
             last_name: last_name,
             tel: tel
         },
-        success (data)
-    {
-        if (data.status){
-            document.location.href = 'index.php'
-        }else {
-            if (data.type === 1){
-                data.field.forEach(function (fields) {
-                    $(`input[name="${fields}"]`).addClass('empty');
+        success(data) {
+            if (data.status) {
+                document.location.href = 'index.php'
+            } else {
+                if (data.type === 1) {
+                    data.field.forEach(function (fields) {
+                        $(`input[name="${fields}"]`).addClass('empty');
 
-                })
-            }
+                    })
+                }
                 $('.msg').removeClass('none').text(data.msg);
 
+            }
         }
-    }
-});
+    });
 });

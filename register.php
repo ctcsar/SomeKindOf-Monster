@@ -15,8 +15,7 @@ if (empty($login)) {
     $error_fields[] = 'login';
     $error_msg = 'Заполните все поля';
     $send = false;
-}
-elseif (mb_strlen($login) < 4) {
+} elseif (mb_strlen($login) < 4) {
     $status = false;
     $send = false;
     $error_msg = 'Длина логина не должна быть меньше 4 символов';
@@ -29,7 +28,7 @@ if (empty($_POST['pass'])) {
     $send = false;
 
 }
-if (empty($_POST['pass_rpt'])){
+if (empty($_POST['pass_rpt'])) {
     $status = false;
     $type = 1;
     $error_fields[] = 'pass_rpt';

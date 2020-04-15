@@ -60,9 +60,11 @@
     text-align: center;
     font-family: "Adobe Devanagari";
 }
+
 .none {
     display: none;
 }
+
 .empty {
     border: 2px solid #ff460a;
 }

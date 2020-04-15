@@ -17,7 +17,7 @@ if (!empty($_POST['login'] && $_POST['pass'])) {
             echo json_encode($response);
 
         } else {
-            if ($pri->admin == 1){
+            if ($pri->admin == 1) {
                 $response = [
                     'status' => true,
                     'admin' => true
@@ -40,8 +40,7 @@ if (!empty($_POST['login'] && $_POST['pass'])) {
         ];
         echo json_encode($response);
     }
-}
-else{
+} else {
     if (empty($_POST['login'])) {
         $error_fields[] = 'login';
 
@@ -49,13 +48,13 @@ else{
     if (empty($_POST['pass'])) {
         $error_fields[] = 'pass';
     }
-        $response = [
-            "status" => false,
-            "type" => 1,
-            "field" => $error_fields,
-            "msg" => "Вы забыли ввести данные"
-        ];
-        echo json_encode($response);
+    $response = [
+        "status" => false,
+        "type" => 1,
+        "field" => $error_fields,
+        "msg" => "Вы забыли ввести данные"
+    ];
+    echo json_encode($response);
 
 }
 

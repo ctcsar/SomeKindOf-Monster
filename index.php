@@ -15,7 +15,7 @@
     <table align="center">
         <tr>
             <th><label>Логин:</label></th>
-            <td><input type="text" name="login" placeholder=" логин" class="text_area" ></td>
+            <td><input type="text" name="login" placeholder=" логин" class="text_area"></td>
         </tr>
         <tr>
             <th><label>Пароль:</label></th>
