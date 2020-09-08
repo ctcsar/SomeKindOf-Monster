@@ -1,14 +1,17 @@
 <?php
 $error_fields = [];
-if (!empty($_POST['login'] && $_POST['pass'])) {
-    $login = filter_var(trim($_POST['login']), FILTER_SANITIZE_STRING);
+$json_obj = json_decode($_POST['json_obj'], true);
+$login = $json_obj['login'];
+$pass = $json_obj['pass'];
+if (!empty($login && $pass)) {
+    // $login = filter_var(trim($_POST['login']), FILTER_SANITIZE_STRING);
     require_once 'BDConfig.php';
     $sql = "SELECT * FROM `admins` WHERE login= '$login'";
     $query = $pdo->query($sql);
     $pri = $query->fetch(PDO::FETCH_OBJ);
     if ($pri) {
         $hash_pass = $pri->pass;
-        $pass = password_verify($_POST['pass'], $hash_pass);
+        $pass = password_verify($pass, $hash_pass);
         if (!$pass) {
             $response = [
                 "status" => false,
@@ -41,11 +44,11 @@ if (!empty($_POST['login'] && $_POST['pass'])) {
         echo json_encode($response);
     }
 } else {
-    if (empty($_POST['login'])) {
+    if (empty($login)) {
         $error_fields[] = 'login';
 
     }
-    if (empty($_POST['pass'])) {
+    if (empty($pass)) {
         $error_fields[] = 'pass';
     }
     $response = [

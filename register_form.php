@@ -15,31 +15,31 @@
     <table align="center">
         <tr>
             <th><label>Логин:<b class="important">*</b></label></th>
-            <td><input type="text" name="login" placeholder=" логин" class="text_area"></td>
+            <td><input type="text" name="login" placeholder=" логин" class="text_area input_field"></td>
         </tr>
                 <tr>
             <th><label>Пароль:<b class="important">*</b></label></th>
-            <td><input type="password" name="pass" placeholder=" пароль" class="text_area"><br></td>
+            <td><input type="password" name="pass" placeholder=" пароль" class="text_area input_field"><br></td>
         </tr>
         <tr>
             <th><label>Пароль еще раз:<b class="important">*</b></label></th>
-            <td><input type="password" name="pass_rpt" placeholder=" пароль еще раз" class="text_area"><br></td>
+            <td><input type="password" name="pass_rpt" placeholder=" пароль еще раз" class="text_area input_field"><br></td>
         </tr>
         <tr>
             <th><label>Е-майл:<b class="important">*</b></label></th>
-            <td><input type="text" name="email" placeholder=" email" class="text_area"></td>
+            <td><input type="text" name="email" placeholder=" email" class="text_area input_field"></td>
         </tr>
         <tr>
             <th><label>Имя:</label></th>
-            <td><input type="text" name="name" placeholder=" имя" class="text_area"></td>
+            <td><input type="text" name="name" placeholder=" имя" class="text_area input_field"></td>
         </tr>
         <tr>
             <th><label>Фамилия:</label></th>
-            <td><input type="text" name="last_name" placeholder=" фамилия" class="text_area"></td>
+            <td><input type="text" name="last_name" placeholder=" фамилия" class="text_area input_field"></td>
         </tr>
         <tr>
             <th><label>Телефон:</label></th>
-            <td><input type="text" name="tel" placeholder=" телефон" class="text_area"></td>
+            <td><input type="text" name="tel" placeholder=" телефон" class="text_area input_field"></td>
         </tr>
 
 

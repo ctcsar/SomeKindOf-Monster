@@ -1,29 +1,37 @@
 /*Форма авторизации*/
-$('html').keydown(function(e){ //отлавливаем нажатие клавиш
+$('html').keydown(function (e) { //отлавливаем нажатие клавиш
     if (e.keyCode == 13) { //если нажали Enter, то true
         $('.btn_SignUp').click();// Нажатие на клавиатуре Enter инициирует нажатие кнопки отправки
         $('.btn_SignIn').click();
     }
 });
+let is_admin = 0;
+
+
 
 $('.btn_SignIn').click(function () {//отслеживаем нажатие кнопки "Авторизация"
-    let login = $('input[name="login"]').val(),
-        pass = $('input[name="pass"]').val();
+    let login = $('#login').val(),
+        pass = $('#pass').val();
     $('input').removeClass('empty');// Очищаем выделениие полей, если они остались с предыдущего заполнения
 
+    let json_obj = {
+        login: login,
+        pass: pass
+    };
 
     $.ajax({
         url: 'auth.php',
         type: 'POST',
         dataType: 'json',
         data: {
-            login: login,
-            pass: pass
+            json_obj: JSON.stringify(json_obj),
         },
         success(data) {
             if (data.status) {
                 if (data.admin) {
-                    document.location.href = 'admin.php'
+
+                    document.location.href = 'admin.php';
+
                 } else {
                     document.location.href = 'Hello.php'
                 }
@@ -32,23 +40,33 @@ $('.btn_SignIn').click(function () {//отслеживаем нажатие кн
                     data.field.forEach(function (field) {
                         $(`input[name="${field}"]`).addClass('empty');
 
-                    })
+                    });
                 }
+
                 $('.msg').removeClass('none').text(data.msg);
+
             }
+
         }
     });
+    if (is_admin == 1) {
+        alert('admin');
+
+
+    }
+
 });
 
+
+
+
 /*Форма регистрации*/
+
 $('.btn_SignUp').click(function () {
-    let login = $('input[name="login"]').val(),
-        pass = $('input[name="pass"]').val(),
-        pass_rpt = $('input[name="pass_rpt"]').val(),
-        email = $('input[name="email"]').val(),
-        name = $('input[name="name"]').val(),
-        last_name = $('input[name="last_name"]').val(),
-        tel = $('input[name="tel"]').val();
+    let json_var = {}; 
+    $.each($(".input_field"), function (index, element) {
+        json_var[this.name] = $(element).val();
+    })
     $('input').removeClass('empty');
 
 
@@ -57,14 +75,8 @@ $('.btn_SignUp').click(function () {
         type: 'POST',
         dataType: 'json',
         data: {
-            login: login,
-            pass: pass,
-            pass_rpt: pass_rpt,
-            email: email,
-            name: name,
-            last_name: last_name,
-            tel: tel
-        },
+             json_var: JSON.stringify(json_var) 
+            },
         success(data) {
             if (data.status) {
                 document.location.href = 'index.php'

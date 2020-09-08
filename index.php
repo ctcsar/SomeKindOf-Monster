@@ -15,11 +15,11 @@
     <table align="center">
         <tr>
             <th><label>Логин:</label></th>
-            <td><input type="text" name="login" placeholder=" логин" class="text_area"></td>
+            <td><input type="text" name="login" id="login" placeholder=" логин" class="text_area"></td>
         </tr>
         <tr>
             <th><label>Пароль:</label></th>
-            <td><input type="password" name="pass" placeholder=" пароль" class="text_area"><br></td>
+            <td><input type="password" name="pass" id="pass" placeholder=" пароль" class="text_area" autocomplete="on"><br></td>
         </tr>
     </table>
     <button class="btn btn-success btn_SignIn" type="button">Авторизоваться</button>
